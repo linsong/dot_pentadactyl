@@ -11,9 +11,6 @@ set complete=slf
 set defsearch=g 
 set hlfind
 set incfind
-"set smartcase
-
-set showstatuslinks
 
 set nextpattern+=^\s*下一页\s*$,^\s*下一张\s*$,^››$
 set previouspattern+=^\s*上一页\s*$,^\s*上一张\s*$,^‹‹$
@@ -67,8 +64,8 @@ cmap <C-p> <up>
 
 :map ,s3 :emenu Tools.S3 Organizer<CR>
 
-:map ,v :emenu Cocoon.Login<CR>
-
+:map ,tr :emenu tile.tile tab.right.
+:map ,tl :emenu tile.tile tab.left.
 " end menu shortcuts }}}2
 " }}}1
 
@@ -76,7 +73,8 @@ cmap <C-p> <up>
 " for autocmd not working issue: http://code.google.com/p/vimperator-labs/issues/detail?id=406
 " simple note is for one kind of autocmd, define it only once, otherwise the latter one will override the previous one
 "autocmd LocationChange .* js modes.passAllKeys = /mail\.google\.com/.test(buffer.URL) || /www\.google\.com\/reader/.test(buffer.URL) || /www\.delicious\.com\/save/.test(buffer.URL) 
-:autocmd LocationChange www.google.com/reader,mail.google.com,www.delicious.com/save :normal! <C-z>
+
+":autocmd LocationChange www.google.com/reader,mail.google.com,www.delicious.com/save :normal! <C-z>
 
 "" for Linux 
 "":au LocationChange .* :set editor=gvim -f
@@ -89,7 +87,7 @@ cmap <C-p> <up>
 " plugin settings {{{1
  " flashblock {{{2
  set fbwhitelist=www.youku.com,www.tudou.com,www.qiyi.com,www.iqiyi.com,www.youku.com
- map -silent ;flt :flashtoggle<CR>
+ map -silent ,ft :flashtoggle<CR>
  " }}}2
 " }}}1
 
