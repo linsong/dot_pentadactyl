@@ -1,0 +1,15 @@
+.DS_Store
+.bundle
+tmp/
+temp/
+tmp/
+*.swp
+*.swo
+*.dmg
+*.pyc
+*.log
+.cache/
+tags
+ftags
+.cache_*
+info/

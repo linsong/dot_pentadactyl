@@ -1,0 +1,96 @@
+" settings
+
+loadplugins '\.(js|penta)$'
+group user
+
+color molokai
+
+set complete=slf
+
+"should match the name set in ":dialog searchengine" dialog
+set defsearch=g 
+set hlfind
+set incfind
+"set smartcase
+
+set showstatuslinks
+
+set nextpattern+=^\s*下一页\s*$,^\s*下一张\s*$,^››$
+set previouspattern+=^\s*上一页\s*$,^\s*上一张\s*$,^‹‹$
+
+"Allow user to click in address bar.
+set! browser.urlbar.clickSelectsAll=true
+set! browser.urlbar.doubleClickSelectsAll=true
+
+" key mappings {{{1
+" resource the rc file
+:map ,s :source ~/.pentadactylrc<CR>
+
+:map <A-n> :tabnew<CR>
+:map <A-.> :tabnext<CR>
+:map <A-,> :tabprev<CR>
+:map <A-q> :tabclose<CR>
+
+"Map paste operation normally.
+imap <C-v> <C-v>
+
+" use c-n and c-p to go up and down in insert and command mode
+imap <C-n> <down>
+imap <C-p> <up>
+cmap <C-n> <down>
+cmap <C-p> <up>
+
+:command! -nargs=* g open google <args>
+:map ,g :g 
+
+" disable default search 
+:map <M-f> / 
+
+" menu shortcuts {{{2
+" web developers menu shortcut mapping
+:map ,wc :emenu Tools.Web Developer.Cookies.Delete Path Cookies<CR>
+
+" firebug menu shortcut mapping
+:map ,fb :emenu Tools.Web Developer.Firebug.Open Firebug<CR>
+:map ,fi :emenu Tools.Web Developer.Firebug.Inspect Element<CR>
+:map ,fl :emenu Tools.Web Developer.Firebug.Command Line<CR>
+
+" look up word in dict.cn
+:command! dict -nargs=* tabopen http://dict.cn/<args>
+:map w :dict 
+:map <silent> W :exe ":dict "+content.getSelection()<CR> 
+
+:map ,lh :emenu Tools.Live HTTP headers<CR>
+
+:map ,pe :emenu Tools.FoxyProxy Standard.ramhost.Use proxy "ramhost" for all URLs<CR>
+:map ,pd :emenu Tools.FoxyProxy Standard.Completely disable FoxyProxy<CR>
+
+:map ,s3 :emenu Tools.S3 Organizer<CR>
+
+:map ,v :emenu Cocoon.Login<CR>
+
+" end menu shortcuts }}}2
+" }}}1
+
+" autocommands {{{1
+" for autocmd not working issue: http://code.google.com/p/vimperator-labs/issues/detail?id=406
+" simple note is for one kind of autocmd, define it only once, otherwise the latter one will override the previous one
+"autocmd LocationChange .* js modes.passAllKeys = /mail\.google\.com/.test(buffer.URL) || /www\.google\.com\/reader/.test(buffer.URL) || /www\.delicious\.com\/save/.test(buffer.URL) 
+:autocmd LocationChange www.google.com/reader,mail.google.com,www.delicious.com/save :normal! <C-z>
+
+"" for Linux 
+"":au LocationChange .* :set editor=gvim -f
+"":au LocationChange mail\.google\.com :set editor=gvim -f -c 'set ft=mail'
+" for MacOSX
+":set editor=open -W -n -t
+
+" }}}1
+
+" plugin settings {{{1
+ " flashblock {{{2
+ set fbwhitelist=www.youku.com,www.tudou.com,www.qiyi.com,www.iqiyi.com,www.youku.com
+ map -silent ;flt :flashtoggle<CR>
+ " }}}2
+" }}}1
+
+" vim: ft=pentadactyl sw=2 sts=2 foldmethod=marker

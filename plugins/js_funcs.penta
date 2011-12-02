@@ -1,0 +1,18 @@
+" Toggle element
+":js << EOF
+"  toggle_element = function (name){
+"    document.getElementById(name).collapsed ^= 1;
+"  }
+"EOF
+
+" Changing the command line color when focused
+"javascript <<EOM
+  "(function() {
+      "var inputElement = document.getElementById('liberator-commandline-command');
+      "function swapBGColor(event) {
+        "inputElement.parentNode.style.backgroundColor = event.type == "focus" ? "yellow" : "";
+      "}
+      "inputElement.addEventListener('focus', swapBGColor, false);
+      "inputElement.addEventListener('blur', swapBGColor, false);
+  "})();
+"EOM
