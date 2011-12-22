@@ -51,6 +51,9 @@ cmap <C-p> <up>
 " disable default search 
 :map <M-f> / 
 
+:cmap <C-f> <right>
+:cmap <C-b> <left>
+
 " menu shortcuts {{{2
 " web developers menu shortcut mapping
 :map ,wc :emenu Tools.Web Developer.Cookies.Delete Path Cookies<CR>
@@ -94,7 +97,7 @@ cmap <C-p> <up>
 
 " plugin settings {{{1
  " flashblock {{{2
- set fbwhitelist=youku.com,tudou.com,qiyi.com,iqiyi.com,youku.com,github.com,weibo.com,douban.com,xiami.com,youtube.com
+ set fbwhitelist=youku.com,tudou.com,qiyi.com,iqiyi.com,youku.com,github.com,weibo.com,douban.com,xiami.com,youtube.com,douban.com,github.com,douban.fm
  map -silent ,ft :flashtoggle<CR>
  " }}}2
 " }}}1
