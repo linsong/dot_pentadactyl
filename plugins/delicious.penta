@@ -10,6 +10,7 @@ delicious = function(){
   } else {
     a()}
   };
+
 EOF
 command! delicious js delicious()
 map <M-d> :delicious<CR>

@@ -1,8 +1,8 @@
-"use strict";
+/* use strict */
 XML.ignoreWhitespace = false;
 XML.prettyPrinting = false;
 var INFO =
-<plugin name="flashblock" version="1.0.11"
+<plugin name="flashblock" version="1.1"
         href="http://dactyl.sf.net/pentadactyl/plugins#flashblock-plugin"
         summary="Flash Blocker"
         xmlns={NS}>
@@ -80,11 +80,11 @@ var INFO =
 if ("noscriptOverlay" in window)
     noscriptOverlay.safeAllow("dactyl:", true, false);
 
-options.add(["flashblock", "fb"],
+group.options.add(["flashblock", "fb"],
     "Enable blocking of flash animations",
     "boolean", true,
     { setter: reload });
-options.add(["fbwhitelist", "fbw"],
+group.options.add(["fbwhitelist", "fbw"],
     "Sites which may run flash animations without prompting",
     "sitelist", "",
     {
@@ -102,7 +102,7 @@ options.add(["fbwhitelist", "fbw"],
 group.commands.add(["flashtoggle", "flt"],
     "Toggle playing of flash animations on the current page",
     function () {
-        if (util.evaluateXPath("//pseudoembed", buffer.focusedFrame.document).snapshotLength)
+        if (buffer.allFrames().some(function (w) DOM("pseudoembed", w.document).length))
             commands.get("flashplay").action();
         else
             commands.get("flashstop").action();
