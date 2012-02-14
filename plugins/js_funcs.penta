@@ -16,3 +16,25 @@
       "inputElement.addEventListener('blur', swapBGColor, false);
   "})();
 "EOM
+
+" search engine related mappings
+" search selected text with 't' or 'o'
+" if nothing selected, open a new window or tab, just like the default
+:map t -js content.getSelection().toString()!=""?dactyl.execute(":tabopen "+ content.getSelection()):CommandExMode().open("tabopen ")
+:map o -js content.getSelection().toString()!=""?dactyl.execute(":open "+ content.getSelection()):CommandExMode().open("open ")
+
+" use selected text to search, but allow user to select search engine 
+:com! -nargs=? -complete=search engineSelect exe 't <args> ' + content.getSelection()
+:map S :engineSelect<Space>
+
+" research current search keywords using other search engine
+:com! -nargs=? -complete=search switchenginesearch exe 'o <args> ' + (buffer.lastInputField?buffer.lastInputField.value:'')
+:map s gi<ESC> :switchenginesearch<Space>
+
+" site search 
+" google 
+:com! -nargs=* sitesearch exe "t http://www.google.com/search?q=" + encodeURIComponent("<args>") + "&sitesearch=" + window.content.location.hostname
+
+" baidu
+:com! -nargs=* sitesearch exe "t http://www.baidu.com/s?ie=utf-8&word=" + encodeURIComponent("<args> site:" + window.content.location.hostname);
+
