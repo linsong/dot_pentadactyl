@@ -25,6 +25,7 @@ set! browser.urlbar.doubleClickSelectsAll=true
 
 " passkeys {{{1
 set passkeys+=www.google.com/reader:npfov?astmSA,gu,gt
+set passkeys+=bitbucket.org:jko?/,ro,rd,rs,rc,rw,ri,ra,gd,ga,gi,ge,gr
 " }}}1
 
 " key mappings {{{1
@@ -100,8 +101,9 @@ cmap <C-p> <up>
 
 " plugin settings {{{1
  " flashblock {{{2
- set fbwhitelist=youku.com,tudou.com,qiyi.com,iqiyi.com,youku.com,github.com,weibo.com,douban.com,xiami.com,youtube.com,douban.com,github.com,douban.fm,google.com
- map -silent ,ft :flashtoggle<CR>
+ set noflashblock 
+ "set fbwhitelist=youku.com,tudou.com,qiyi.com,iqiyi.com,youku.com,github.com,weibo.com,douban.com,xiami.com,youtube.com,douban.com,github.com,douban.fm,google.com
+ "map -silent ,ft :flashtoggle<CR>
  " }}}2
 " }}}1
 
