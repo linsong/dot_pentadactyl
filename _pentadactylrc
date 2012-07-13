@@ -25,7 +25,11 @@ set! browser.urlbar.doubleClickSelectsAll=true
 
 " passkeys {{{1
 set passkeys+=www.google.com/reader:npfov?astmSA,gu,gt
-set passkeys+=bitbucket.org:jko?/,ro,rd,rs,rc,rw,ri,ra,gd,ga,gi,ge,gr
+set passkeys+=bitbucket.org/vincent_wang/fg-tools/issues:jk/
+set passkeys+=bitbucket.org/vincent_wang/fg-tools/overview:jk/
+set passkeys+=bitbucket.org/vincent_wang/fg-tools/src:jk/
+set passkeys+=bitbucket.org/vincent_wang/fg-tools/changesets:jk/
+set passkeys+=bitbucket.org:?,ro,rd,rs,rc,rw,ri,ra,gd,ga,gi,ge,gr
 " }}}1
 
 " key mappings {{{1
